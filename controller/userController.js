@@ -109,14 +109,8 @@ const getUsers = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.query.id);
-  if (user) {
-    await user.remove();
-    res.json({ message: "User removed" });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
+  const user = await User.findOneAndDelete({ _id: req.query.id });
+  res.json({ message: "User removed" });
 });
 
 // @desc    Get user by Id
