@@ -24,10 +24,12 @@ const userSchema = mongoose.Schema(
     musicLanguage: {
       type: String,
     },
-    musicNotes: {
-      type: String,
-    },
     musicFile: [
+      {
+        type: String,
+      },
+    ],
+    musicNotes: [
       {
         type: String,
       },
